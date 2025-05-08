@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class LapTrigger : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+   void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AICar"))
+        if (other.CompareTag("AICar") || other.GetComponentInParent<LapTimer>() != null)
         {
-            LapTimer timer = other.GetComponent<LapTimer>();
+            LapTimer timer = other.GetComponentInParent<LapTimer>();
             if (timer != null)
             {
                 timer.CompleteLap();
             }
         }
     }
+
 }
